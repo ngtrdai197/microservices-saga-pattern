@@ -1,0 +1,1 @@
+export const KAFKA_INJECT_TOKEN = 'KAFKA_INJECT_TOKEN';
