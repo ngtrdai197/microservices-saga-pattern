@@ -1,6 +1,6 @@
+import { BizProductService } from '@app/biz-product';
+import { CreateProductDto } from '@app/biz-product/dtos/create-product.dto';
 import { Injectable } from '@nestjs/common';
-import { BizProductService } from 'libs/biz-product/src';
-import { CreateProductDto } from 'libs/biz-product/src/dtos/create-product.dto';
 
 @Injectable()
 export class ProductService {

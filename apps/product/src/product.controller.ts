@@ -1,7 +1,7 @@
+import { CreateProductDto } from '@app/biz-product/dtos/create-product.dto';
 import { ProductEntity } from '@app/database/entities';
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { CreateProductDto } from 'libs/biz-product/src/dtos/create-product.dto';
 import { ProductService } from './product.service';
 
 @Controller('product')

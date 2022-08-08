@@ -1,12 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Exclude, Expose } from 'class-transformer';
-import {
-  IsArray,
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-} from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { OrderEntity } from './order.entity';
 
@@ -26,7 +20,6 @@ export class ProductEntity {
   @Column({ name: 'photos', type: 'text' })
   @ApiProperty()
   @Expose({ name: 'photos' })
-  @IsArray()
   @IsNotEmpty()
   photos: string;
 

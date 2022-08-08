@@ -47,6 +47,18 @@
       ],
       "@app/common/*": [
         "libs/common/src/*"
+      ],
+      "@app/biz-order": [
+        "libs/biz-order/src"
+      ],
+      "@app/biz-order/*": [
+        "libs/biz-order/src/*"
+      ],
+      "@app/biz-user": [
+        "libs/biz-user/src"
+      ],
+      "@app/biz-user/*": [
+        "libs/biz-user/src/*"
       ]
     }
   }

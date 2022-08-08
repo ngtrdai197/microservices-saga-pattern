@@ -24,4 +24,12 @@ export class BizProductService {
     );
     return product;
   }
+
+  public async findById(productId: number): Promise<ProductEntity | undefined> {
+    return this.productRepos.findOne({ id: productId });
+  }
+
+  public async findByIds(ids: number[]): Promise<ProductEntity[]> {
+    return this.productRepos.findByIds(ids);
+  }
 }

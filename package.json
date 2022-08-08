@@ -91,7 +91,9 @@
       "^@app/grpc(|/.*)$": "<rootDir>/libs/grpc/src/$1",
       "^@app/database(|/.*)$": "<rootDir>/libs/database/src/$1",
       "^@app/biz-product(|/.*)$": "<rootDir>/libs/biz-product/src/$1",
-      "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1"
+      "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1",
+      "^@app/biz-order(|/.*)$": "<rootDir>/libs/biz-order/src/$1",
+      "^@app/biz-user(|/.*)$": "<rootDir>/libs/biz-user/src/$1"
     }
   }
 }

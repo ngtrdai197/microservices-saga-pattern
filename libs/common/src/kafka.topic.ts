@@ -1,9 +1,9 @@
 export class KafkaTopics {
   private static MVC_ORDER_PREFIX_TOPIC = 'mvc.order.';
-  public static ORDER_CREATE =
-    KafkaTopics.MVC_ORDER_PREFIX_TOPIC + 'order.create';
-  public static ORDER_CREATE_SUCCESSFUL =
-    KafkaTopics.MVC_ORDER_PREFIX_TOPIC + 'order.create.successful';
-  public static ORDER_CREATE_FAILED =
-    KafkaTopics.MVC_ORDER_PREFIX_TOPIC + 'order.create.failed';
+  private static MVC_PRODUCT_PREFIX_TOPIC = 'mvc.product.';
+  public static ORDER_CREATED = KafkaTopics.MVC_ORDER_PREFIX_TOPIC + 'created';
+  public static ORDER_UPDATE_PAYMENT_STATUS =
+    KafkaTopics.MVC_ORDER_PREFIX_TOPIC + 'update.payment.status';
+  public static INVENTORY_PRODUCT_DECREASE_TOTAL =
+    KafkaTopics.MVC_PRODUCT_PREFIX_TOPIC + 'inventory.decrease.total';
 }

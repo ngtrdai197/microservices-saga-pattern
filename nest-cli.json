@@ -89,6 +89,24 @@
       "compilerOptions": {
         "tsConfigPath": "libs/common/tsconfig.lib.json"
       }
+    },
+    "biz-order": {
+      "type": "library",
+      "root": "libs/biz-order",
+      "entryFile": "index",
+      "sourceRoot": "libs/biz-order/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/biz-order/tsconfig.lib.json"
+      }
+    },
+    "biz-user": {
+      "type": "library",
+      "root": "libs/biz-user",
+      "entryFile": "index",
+      "sourceRoot": "libs/biz-user/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/biz-user/tsconfig.lib.json"
+      }
     }
   }
 }

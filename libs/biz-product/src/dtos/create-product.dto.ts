@@ -1,12 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Expose } from 'class-transformer';
-import {
-  IsArray,
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-} from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateProductDto {
   @Expose({ name: 'name' })
@@ -17,7 +11,6 @@ export class CreateProductDto {
 
   @Expose({ name: 'photos' })
   @ApiProperty()
-  @IsArray()
   @IsNotEmpty()
   photos: string;
 

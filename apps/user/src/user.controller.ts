@@ -1,10 +1,12 @@
+import { CreateUserDto } from '@app/biz-user/dtos/create-user.dto';
+import { UserEntity } from '@app/database/entities';
 import { Body, Controller, Post } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { plainToInstance } from 'class-transformer';
-import { CreateUserDto } from './dtos/create-user.dto';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UserService } from './user.service';
 
 @Controller('user')
+@ApiTags('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
@@ -14,7 +16,12 @@ export class UserController {
   }
 
   @Post()
+  @ApiResponse({
+    status: 200,
+    description: 'The record has been successfully created.',
+    type: UserEntity,
+  })
   create(@Body() createUser: CreateUserDto) {
-    return this.userService.create(plainToInstance(CreateUserDto, createUser));
+    return this.userService.create(createUser);
   }
 }

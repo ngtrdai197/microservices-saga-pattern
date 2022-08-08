@@ -41,7 +41,7 @@ export class OrderEntity {
   @Column({ default: ORDER_STATUS.CREATED })
   @IsEnum(ORDER_STATUS)
   @IsNotEmpty()
-  status: ORDER_STATUS;
+  status: string;
 
   @Column({
     name: 'created_at',
