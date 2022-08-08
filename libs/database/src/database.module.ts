@@ -1,9 +1,10 @@
+import { Constants } from '@app/common';
 import { Logger, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Constants } from 'libs/common/constants';
 import { DBLogger } from './db-logger';
 import { InventoryEntity, ProductEntity, UserEntity } from './entities';
+import { OrderEntity } from './entities/order.entity';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { InventoryEntity, ProductEntity, UserEntity } from './entities';
           username: configService.get('database.user'),
           password: configService.get('database.password'),
           database: configService.get('database.name'),
-          entities: [UserEntity, ProductEntity, InventoryEntity],
+          entities: [UserEntity, ProductEntity, InventoryEntity, OrderEntity],
           synchronize: false,
           entityPrefix: 'tb_',
           logging:

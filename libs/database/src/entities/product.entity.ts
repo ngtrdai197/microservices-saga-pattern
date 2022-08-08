@@ -7,7 +7,8 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { OrderEntity } from './order.entity';
 
 @Entity('product')
 @Exclude()
@@ -42,4 +43,7 @@ export class ProductEntity {
   @IsString()
   @IsOptional()
   description?: string;
+
+  @ManyToMany(() => OrderEntity, (order) => order.products)
+  orders: OrderEntity[];
 }

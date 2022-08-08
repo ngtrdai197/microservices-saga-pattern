@@ -1,6 +1,13 @@
 import { Exclude, Expose } from 'class-transformer';
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  Unique,
+} from 'typeorm';
+import { OrderEntity } from './order.entity';
 
 @Entity('user')
 @Unique(['email'])
@@ -32,4 +39,7 @@ export class UserEntity {
   @IsNotEmpty()
   @IsString()
   password: string;
+
+  @OneToMany(() => OrderEntity, (order) => order.user)
+  orders: OrderEntity[];
 }
