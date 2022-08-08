@@ -71,6 +71,24 @@
       "compilerOptions": {
         "tsConfigPath": "libs/biz-product/tsconfig.lib.json"
       }
+    },
+    "orchestator": {
+      "type": "application",
+      "root": "apps/orchestator",
+      "entryFile": "main",
+      "sourceRoot": "apps/orchestator/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/orchestator/tsconfig.app.json"
+      }
+    },
+    "common": {
+      "type": "library",
+      "root": "libs/common",
+      "entryFile": "index",
+      "sourceRoot": "libs/common/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/common/tsconfig.lib.json"
+      }
     }
   }
 }

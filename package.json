@@ -90,7 +90,8 @@
       "^@app/kafka(|/.*)$": "<rootDir>/libs/kafka/src/$1",
       "^@app/grpc(|/.*)$": "<rootDir>/libs/grpc/src/$1",
       "^@app/database(|/.*)$": "<rootDir>/libs/database/src/$1",
-      "^@app/biz-product(|/.*)$": "<rootDir>/libs/biz-product/src/$1"
+      "^@app/biz-product(|/.*)$": "<rootDir>/libs/biz-product/src/$1",
+      "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1"
     }
   }
 }
