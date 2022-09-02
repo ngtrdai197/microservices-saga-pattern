@@ -27,6 +27,8 @@
     "test:e2e": "jest --config ./apps/microservices-saga-pattern/test/jest-e2e.json"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.6.12",
+    "@grpc/proto-loader": "^0.7.2",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",

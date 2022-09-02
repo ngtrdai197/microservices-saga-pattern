@@ -6,6 +6,10 @@
   "root": "apps/order",
   "compilerOptions": {
     "webpack": true,
+    "assets": [
+      "**/*.proto"
+    ],
+    "watchAssets": true,
     "tsConfigPath": "apps/order/tsconfig.app.json"
   },
   "projects": {
@@ -106,6 +110,15 @@
       "sourceRoot": "libs/biz-user/src",
       "compilerOptions": {
         "tsConfigPath": "libs/biz-user/tsconfig.lib.json"
+      }
+    },
+    "internal-api": {
+      "type": "application",
+      "root": "apps/internal-api",
+      "entryFile": "main",
+      "sourceRoot": "apps/internal-api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/internal-api/tsconfig.app.json"
       }
     }
   }
