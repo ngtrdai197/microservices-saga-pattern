@@ -1,10 +1,5 @@
 import { Constants } from '@app/common';
-import {
-  BadRequestException,
-  InternalServerErrorException,
-  Logger,
-  ValidationPipe,
-} from '@nestjs/common';
+import { BadRequestException, Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
@@ -13,6 +8,13 @@ import { OrderModule } from './order.module';
 async function bootstrap() {
   const app = await NestFactory.create(OrderModule);
   const config = app.get(ConfigService);
+
+  // Setup port
+  const PORT = config.get<string>(Constants.ORDER_PORT);
+  const KAFKA_URI = config.get<string>('kafka.uri');
+  if (!PORT || !KAFKA_URI) {
+    throw new Error(`Some env is not defined`);
+  }
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
@@ -31,7 +33,7 @@ async function bootstrap() {
       transport: Transport.KAFKA,
       options: {
         client: {
-          brokers: ['localhost:9094'],
+          brokers: [KAFKA_URI],
         },
         consumer: {
           groupId: 'kafka.mvc.order.consumer',
@@ -44,16 +46,10 @@ async function bootstrap() {
     },
     { inheritAppConfig: true },
   );
-  // Setup port
-  const PORT = config.get<string>(Constants.ORDER_PORT);
-  if (!PORT) {
-    throw new InternalServerErrorException(
-      `Can not get env ${Constants.ORDER_PORT}`,
-    );
-  }
   await app.startAllMicroservices();
   await app.listen(PORT, () =>
-    Logger.log('Order app running on port: ' + PORT, 'Bootstrap'),
+    Logger.log('Order service started at port: ' + PORT, 'Bootstrap'),
   );
 }
+
 bootstrap();

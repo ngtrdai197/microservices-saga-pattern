@@ -4,6 +4,7 @@ import {
   OnApplicationShutdown,
   OnModuleInit,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { Kafka, Partitioners, Producer } from 'kafkajs';
 
 @Injectable()
@@ -12,9 +13,13 @@ export class KafkaService implements OnModuleInit, OnApplicationShutdown {
   private kafka: Kafka;
   private producer: Producer;
 
-  constructor() {
+  constructor(private readonly configService: ConfigService) {
+    const kafkaUri = this.configService.get('kafka.uri');
+    if (!kafkaUri) {
+      throw new Error('Kafka URI is not defined');
+    }
     this.kafka = new Kafka({
-      brokers: ['localhost:9094'],
+      brokers: [kafkaUri],
     });
 
     this.producer = this.kafka.producer({
@@ -22,6 +27,7 @@ export class KafkaService implements OnModuleInit, OnApplicationShutdown {
       createPartitioner: Partitioners.LegacyPartitioner,
     });
   }
+
   async onModuleInit() {
     await this.producer.connect();
   }

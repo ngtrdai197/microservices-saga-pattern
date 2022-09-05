@@ -20,8 +20,7 @@ import { OrderEntity } from './entities/order.entity';
           entities: [UserEntity, ProductEntity, InventoryEntity, OrderEntity],
           synchronize: false,
           entityPrefix: 'tb_',
-          logging:
-            configService.get('env') === Constants.ENV_DEV ? true : false,
+          logging: configService.get('env') === Constants.ENV_DEV,
           keepConnectionAlive: true,
           retryDelay: 5000,
           logger: new DBLogger(new Logger()),

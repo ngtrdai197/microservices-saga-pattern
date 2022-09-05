@@ -4,8 +4,8 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { OrderService } from './order.service';
 
-@Controller('order')
 @ApiTags('orders')
+@Controller('order')
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 

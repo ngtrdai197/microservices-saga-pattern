@@ -2,7 +2,7 @@ import { ProductEntity, UserEntity } from '@app/database/entities';
 import { OrderEntity } from '@app/database/entities/order.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DeepPartial, Repository, UpdateResult } from 'typeorm';
 
 @Injectable()
 export class BizOrderService {
@@ -23,5 +23,14 @@ export class BizOrderService {
         products: dto.products,
       }),
     );
+  }
+
+  public async update(order: DeepPartial<OrderEntity>): Promise<UpdateResult> {
+    return this.orderRepos
+      .createQueryBuilder()
+      .update()
+      .set(order)
+      .where('id = :id', { id: order.id })
+      .execute();
   }
 }
